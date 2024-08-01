@@ -1,0 +1,8 @@
+SET probusUser TO $'''automate'''
+SET probusPassword TO $'''8wrdlDkLm3c'''
+CALL waitTime
+CALL loginProbus
+CALL generateReport
+CALL getExcelData
+CALL sendMail
+CALL finishAutomation

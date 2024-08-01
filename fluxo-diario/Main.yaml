@@ -1,0 +1,5 @@
+SET Filter TO $'''engenharia'''
+SET Title TO $'''Relatório de pedidos de venda'''
+SET emails TO $'''daniel.vargas@metaro.com.br;chailan.rossetto@metaro.com.br;rodrigo.tavares@metaro.com.br'''
+SET timeToStart TO 6
+CALL application

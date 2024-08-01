@@ -1,0 +1,2 @@
+System.TerminateProcess.TerminateProcessByName ProcessName: $'''Probus'''
+External.ShutdownComputer.Shutdown Force: True

@@ -1,0 +1,27 @@
+@@copilotGeneratedAction: 'False'
+Scripting.RunJavascript.RunJavascript JavascriptCode: $'''var now = new Date();
+var currentDay = now.getDay();
+
+WScript.echo(currentDay);''' ScriptOutput=> weekDay
+Text.ToNumber Text: weekDay Number=> weekDay
+**REGION daysSleeping
+SET daysSleeping TO 0
+IF weekDay = 5 THEN
+    SET daysSleeping TO 2
+ELSE IF weekDay = 6 THEN
+    SET daysSleeping TO 1
+END
+**ENDREGION
+@@copilotGeneratedAction: 'False'
+Scripting.RunJavascript.RunJavascript JavascriptCode: $'''var specificTime = \"23:59:59\";
+var now = new Date();
+var timeParts = specificTime.split(\':\');
+var specificDate = new Date(now.getFullYear(), now.getMonth(), now.getDate(), timeParts[0], timeParts[1], timeParts[2]);
+var differenceInMilliseconds = specificDate - now;
+var differenceInSeconds = Math.floor(differenceInMilliseconds / 1000);
+
+WScript.echo(differenceInSeconds);''' ScriptOutput=> waitTime
+Text.ToNumber Text: waitTime Number=> timeUntilMidnight
+SET timeToStart TO timeToStart * 3600
+SET waitTime TO (daysSleeping * 86400) + timeUntilMidnight + timeToStart
+WAIT waitTime
