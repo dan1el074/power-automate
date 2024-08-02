@@ -1,18 +1,12 @@
 DateTime.GetCurrentDateTime.Local DateTimeFormat: DateTime.DateTimeFormat.DateOnly CurrentDateTime=> now
 IF now.Month > 6 THEN
     SET data TO $'''010%now.Month - 6%%now.Year%'''
-ELSE IF now.Month = 6 THEN
-    SET data TO $'''0112%now.Year - 1%'''
-ELSE IF now.Month = 5 THEN
-    SET data TO $'''0111%now.Year - 1%'''
-ELSE IF now.Month = 4 THEN
-    SET data TO $'''0110%now.Year - 1%'''
-ELSE IF now.Month = 3 THEN
-    SET data TO $'''0109%now.Year - 1%'''
-ELSE IF now.Month = 2 THEN
-    SET data TO $'''0108%now.Year - 1%'''
 ELSE
-    SET data TO $'''0107%now.Year - 1%'''
+    IF now.Month > 3 THEN
+        SET data TO $'''01%now.Month + 6%%now.Year - 1%'''
+    ELSE
+        SET data TO $'''010%now.Month + 6%%now.Year - 1%'''
+    END
 END
 UIAutomation.Click.Click Element: appmask['Probus \'Home\'']['Consulta de Etapas'] ClickType: UIAutomation.ClickType.DoubleClick MousePositionRelativeToElement: UIAutomation.RectangleEdgePoint.MiddleCenter OffsetX: 0 OffsetY: 0
 UIAutomation.SetWindowState.SetState Window: appmask['Pesquisa de Pedidos de Venda'] State: UIAutomation.WindowState.Maximized
